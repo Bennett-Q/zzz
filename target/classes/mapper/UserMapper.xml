@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zq.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.zq.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="telephone" jdbcType="INTEGER" property="telephone" />
+  </resultMap>
+
+
+    <!--&lt;select id="findAllUser" resultType="com.example.demo.domain.User"&gt;-->
+        <!--select * from a_user t-->
+    <!--&lt;/select&gt;-->
+
+
+    <select id="getUserById" resultType="com.zq.entity.User">
+        select * from user t
+        where t.id = #{id}
+    </select>
+
+    <select id="getUserList" resultType="com.zq.entity.User">
+        select * from user t
+    </select>
+
+</mapper>

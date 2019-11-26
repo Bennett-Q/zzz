@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zq.mapper.TbBooksMapper">
+  <resultMap id="BaseResultMap" type="com.zq.entity.TbBooks">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="bookCount" jdbcType="INTEGER" property="bookcount" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+  </resultMap>
+</mapper>

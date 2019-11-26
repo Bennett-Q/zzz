@@ -1,0 +1,29 @@
+spring:
+  thymeleaf:  #页面热加载，页面修改后不需重启，只需rebuild一下即可在页面显示效果（或者ctrl+F9）
+    cache: false
+  devtools:
+    restart:
+      additional-paths: src/main/java #添加那个目录的文件需要restart
+      exclude: static/**,templates/** #排除那个目录的文件不需要restart
+  mvc:
+    static-path-pattern: static/**  #静态资源虚拟路径
+  resources:
+    static-locations: classpath:/static/  #静态资源实际路径
+mybatis:  #mybatis配置
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.zq.entity
+  configuration:  #打印sql
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      map-underscore-to-camel-case: true
+logging:  #日志配置
+  level:
+    com.supconit.dingtalk.mapper: debug
+pagehelper: #分页插件配置
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count,countSql
+  row-bounds-with-count: true
+
+
+
