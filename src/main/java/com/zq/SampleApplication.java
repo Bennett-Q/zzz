@@ -1,10 +1,8 @@
 package com.zq;
 
-import org.junit.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,22 +12,23 @@ import java.util.Scanner;
 /**
  * Created by zhangq on 2018/10/30.
  */
+//扫描代码所在包路径
 @SpringBootApplication(scanBasePackages = "com.zq")
-@ServletComponentScan
 @Controller
+//扫描关联了mybaits的mapper接口所在路径
 @MapperScan("com.zq.mapper")
 public class SampleApplication{
 
     @RequestMapping("/cat")
     @ResponseBody
     public String home(){
-        String[] xqsList = {"萧山区","余杭区","富阳区","临安市","临安市昌化","建德市","桐庐县","淳安县","市郊"};
-        for (int i = 0; i <xqsList.length ; i++) {
-            if(xqsList[i].equals("萧山区")){
-                continue;
-            }
-            System.out.println(i+"---"+xqsList[i]);
-        }
+//        String[] xqsList = {"萧山区","余杭区","富阳区","临安市","临安市昌化","建德市","桐庐县","淳安县","市郊"};
+//        for (int i = 0; i <xqsList.length ; i++) {
+//            if(xqsList[i].equals("萧山区")){
+//                continue;
+//            }
+//            System.out.println(i+"---"+xqsList[i]);
+//        }
         return "hello springBoot!";
     }
 
@@ -54,12 +53,8 @@ public class SampleApplication{
 //
 //        return user.toString();
 //    }
-    @Test
-    public void test(){
-        System.out.println(121);
-    }
     public static void main(String[] args) {
-//        isAdd(true);
+//        isOdd(true);
 //        toChinese();
         SpringApplication.run(SampleApplication.class, args);
 //        Map<Integer,String> map = new HashMap<Integer, String>();
@@ -84,7 +79,7 @@ public class SampleApplication{
 //        }
     }
     //判断是否奇数
-    public static void isAdd(boolean isContinue){
+    public static void isOdd(boolean isContinue){
         if(isContinue){
             System.out.print("请输入数字：");
             Scanner input=new Scanner(System.in);
@@ -97,11 +92,12 @@ public class SampleApplication{
         String fraction=input.next();
         if(fraction.toUpperCase().equals("Y")){
         System.out.println("-----------------------------------------------");
-            isAdd(true);
+            isOdd(true);
         }else{
             return;
         }
     }
+    //数字日期转中文
     private static String toChinese() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("输入字符串：");
