@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zq.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.zq.entity.User">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="age" jdbcType="INTEGER" property="age" />
-    <result column="telephone" jdbcType="INTEGER" property="telephone" />
-  </resultMap>
-
+  <!--<resultMap id="BaseResultMap" type="com.zq.entity.User">-->
+    <!--&lt;!&ndash;-->
+      <!--WARNING - @mbg.generated-->
+    <!--&ndash;&gt;-->
+    <!--<id column="id" property="id" />-->
+    <!--<result column="username" property="username" />-->
+    <!--<result column="password" property="password" />-->
+    <!--<result column="age" property="age" />-->
+    <!--<result column="telephone" property="telephone" />-->
+    <!--<result column="create_time" property="createTime" />-->
+    <!--<result column="update_time" property="updateTime" />-->
+  <!--</resultMap>-->
+    <!-- 分页查询条件 -->
+    <sql id="search_condition_sql">
+        <where>
+            <if test="condition.id!=null and condition.id != ''">
+                AND r.id = #{condition.id,jdbcType=INTEGER}
+            </if>
+            <if test="condition.username!=null and condition.username != ''">
+                AND r.username = #{condition.username,jdbcType=VARCHAR}
+            </if>
+            <if test="condition.password!=null and condition.password != ''">
+                AND r.password = #{condition.password,jdbcType=VARCHAR}
+            </if>
+            <if test="condition.age!=null and condition.age != ''">
+                AND r.age = #{condition.age,jdbcType=INTEGER}
+            </if>
+            <if test="condition.telephone!=null and condition.telephone != ''">
+                AND r.telephone = #{condition.telephone,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </sql>
 
     <!--&lt;select id="findAllUser" resultType="com.example.demo.domain.User"&gt;-->
         <!--select * from a_user t-->
@@ -26,5 +47,8 @@
     <select id="getUserList" resultType="com.zq.entity.User">
         select * from user t
     </select>
-
+    <select id="selectPageAddressBook" parameterType="com.zq.entity.User" resultType="com.zq.entity.User">
+        SELECT * FROM user r
+        <include refid="search_condition_sql"></include>
+    </select>
 </mapper>

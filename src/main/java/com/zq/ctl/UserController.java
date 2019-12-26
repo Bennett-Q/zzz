@@ -1,13 +1,12 @@
 package com.zq.ctl;
 
+import com.zq.base.HttpResult;
 import com.zq.entity.User;
 import com.zq.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +24,12 @@ public class UserController {
     @ApiOperation(value = "获取所有用户",tags = "用户")
     public List<User> getUserList(){
         return userService.getUserList();
+    }
+
+    @ResponseBody
+    @PostMapping("/user/insert")
+    @ApiOperation(value = "新增",tags = "用户")
+    public HttpResult<Boolean> insert(@RequestBody User user){
+        return userService.insert(user);
     }
 }
