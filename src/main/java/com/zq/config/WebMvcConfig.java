@@ -19,13 +19,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     //静态资源映射,将swagger中的页面映射到resources中，否则访问不到swagger
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) { 
 
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
 
-//        registry.addResourceHandler("index.html")
-//                .addResourceLocations("classpath:/WEB-INF/resources/");
+//        registry.addResourceHandler("/static/img/**")
+//                .addResourceLocations("classpath:/resources/static/static/img/");
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
@@ -52,7 +52,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/swagger-resources/**")
                 .excludePathPatterns("/webjars/**")
                 //-----为了测试放行的api，也可以写不需要权限的api
+                .excludePathPatterns("/error")
+                .excludePathPatterns("/login")
+                .excludePathPatterns("/static/**")
                 .excludePathPatterns("/index.html")
+
                 .excludePathPatterns("/api/user/queryAll")
                 .excludePathPatterns("/api/register")
                 .excludePathPatterns("/api/login")

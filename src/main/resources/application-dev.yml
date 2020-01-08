@@ -3,8 +3,9 @@ spring:
     cache: false
   devtools:
     restart:
-      additional-paths: src/main/java #添加那个目录的文件需要restart
-      exclude: static/**,templates/** #排除那个目录的文件不需要restart
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java, mapper/**, static/** #添加那个目录的文件需要restart
+      exclude: templates/** #排除那个目录的文件不需要restart
   mvc:
     static-path-pattern: static/**  #静态资源虚拟路径
   resources:

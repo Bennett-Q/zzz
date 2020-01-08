@@ -44,12 +44,18 @@
             <!--</exclusions>-->
         </dependency>
         <!--mybatis -->
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.spring.boot</groupId>-->
+            <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--<version>2.0.1</version>-->
+        <!--</dependency>-->
+        <!--mybatis-plus分页插件 (里面会引用mybatis包，所以把上面注释，以免冲突)-->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.0.1</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>3.1.0</version>
         </dependency>
-        <!--mapper-->
+        <!--mapper  （要特别注意版本是否会和springboot相互冲突）-->
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>

@@ -7,6 +7,7 @@ package com.zq;
  */
 public class Java8Test {
     public static void main(String[] args) {
+        System.out.println(1 << 4);
         Java8Test test = new Java8Test();
 
         //类型声明
